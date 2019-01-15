@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "objex-lib": [
+        "dist/objex-lib"
+      ],
+      "objex-lib/*": [
+        "dist/objex-lib/*"
+      ]
+    }
   }
 }

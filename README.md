@@ -1,27 +1,46 @@
-# Objexlib
+# Angular Library
+1. Create Angular Workspace
+ng new objexlib --createApplication=false
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
+Pick defaults when asked 
 
-## Development server
+2. Generate Library inside the workspace
+ng generate library objex-lib --prefix=objex
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This adds a projects directory containing a objex-lib directory for our newly generated objex-lib Angular Library.
 
-## Code scaffolding
+## Generating a library module
+ng generate component login --project=objex-lib
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+It will add new component to projects → objet-lib → src → lib → login
 
-## Build
+Add new component to objet-lib.module.ts exports
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Adding the component to the entry file
+projects\objex-lib\src\public_api.ts
+Add new line:
+export * from './lib/login/login.component';
 
-## Running unit tests
+3. Tester application
+ng generate application objex-tester
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Generates the test application
 
-## Running end-to-end tests
+4. Builds library
+ng build objex-lib OR
+ng build objex-lib --watch <- to increment lib version
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+5. Build tester app
+ng build objex-tester --prod
+ng serve objex-tester
 
-## Further help
+6. Testing
+## Library
+ng test objex-lib
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Use new library component
+a. Generate a new component in our library.
+b. Add the component to our library module’s exports.
+c. Add the component to our entry file.
+d. Rebuild our library after we make changes to it.
+e. Use the new component in our application
