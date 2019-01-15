@@ -26,15 +26,13 @@ ng generate application objex-tester
 
 Generates the test application
 
-4. Builds library
-ng build objex-lib OR
-ng build objex-lib --watch <- to increment lib version
+4. Library and tester app package scripts
+    "build_lib": "ng build objex-lib",
+    "npm_pack": "cd dist/objex-lib && npm pack",
+    "package": "npm run build_lib && npm run npm_pack"
 
-5. Build tester app
-ng build objex-tester --prod
-ng serve objex-tester
+5. Testing
 
-6. Testing
 ## Library
 ng test objex-lib
 
@@ -44,3 +42,8 @@ b. Add the component to our library module’s exports.
 c. Add the component to our entry file.
 d. Rebuild our library after we make changes to it.
 e. Use the new component in our application
+
+6. Publish to npm 
+a. Signup with npm
+b. npm login <- use your credentials
+c. npm publish ./dist/objex-lib/objex-lib-<version>.tgz
